@@ -36,9 +36,15 @@ var markerPopInEvent = new Event('markerPopIn');
  * Ou bien un seul event qui fait toute la logique
  * 
  */
-if(document.querySelector("a-marker").object3D.visible == true) {   //
-    trigger('markerPopIn')
+
+// Lire à JavaScript, Events, DOM APIs
+if(document.querySelector("a-marker").object3D.visible == true) {
+    entityEl.emit('markerPopIn', {collidingEntity: anotherEntityEl}, false);
 }
+
+document.addEventListener('markerPopIn', (event) => {
+    console.log(event);
+});
 
 artoolkitMarker.addEventListener('markerFound', function (event) {   // Three js
     // ...
