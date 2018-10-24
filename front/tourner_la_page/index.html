@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="shortcut icon" href="../logo.png" type="image/png">
+	<title>Accueil</title>
+	<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+	<script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
+
+	<!-- Possible que ce ne soit pas une bonne pratique de mettre dans du JS standard, et non dans le component directement. -->
+	<script src="script.js"></script>
+</head>
+
+<!-- 
+	Les <a-image> peuvent nécessiter un geometry="primitive:plane"
+	Voir https://aframe.io/docs/0.8.0/primitives/a-image.html 
+-->
+
+
+<body style='margin : 0px; overflow: hidden;'>
+	<a-scene embedded arjs='sourceType: webcam;'>
+		<a-marker type="pattern" url="pattern/couv.patt">
+			<!-- Une image blanche en attendant de récupérer la source de la couverture par call AJAX -->
+			<a-image id="couv" emit="couv" src="img/blank.png"></a-image>
+		</a-marker>
+
+		<a-marker type="pattern" url="pattern/L.patt">
+			<!-- Des points de suspension en attendant de récupérer la bonne page par call AJAX -->
+			<a-image id="marker-L" emit="start" class="odd" src=""></a-image>
+		</a-marker>
+
+		<a-marker type="pattern" url="pattern/I.patt">
+			<!-- Des points de suspension en attendant de récupérer la bonne page par call AJAX -->
+			<a-image id="marker-I" emit="start" class="even" src=""></a-image>
+		</a-marker>
+
+		<a-marker type="pattern" url="pattern/V.patt">
+			<!-- Des points de suspension en attendant de récupérer la bonne page par call AJAX -->
+			<a-image id="marker-V" emit="middle" class="odd" src=""></a-image>
+		</a-marker>
+
+		<a-marker type="pattern" url="pattern/R.patt">
+			<!-- Des points de suspension en attendant de récupérer la bonne page par call AJAX -->
+			<a-image id="marker-R" emit="middle" class="even" src=""></a-image>
+		</a-marker>
+
+		<a-marker type="pattern" url="pattern/E.patt">
+			<!-- Des points de suspension en attendant de récupérer la bonne page par call AJAX -->
+			<a-image id="marker-E" emit="end" class="odd" src=""></a-image>
+		</a-marker>
+
+		<a-marker type="pattern" url="pattern/S.patt">
+			<!-- Des points de suspension en attendant de récupérer la bonne page par call AJAX -->
+			<a-image id="marker-S" emit="end" class="even" src=""></a-image>
+		</a-marker>
+
+		<a-entity camera></a-entity>
+	</a-scene>
+
+</body>
+
+</html>
